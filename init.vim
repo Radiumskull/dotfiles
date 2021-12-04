@@ -14,7 +14,7 @@ set smartcase
 set ignorecase
 set incsearch
 set cursorline
-set encoding=UTF-8
+set encoding=utf-8
 set linebreak
  
 set autoindent
@@ -47,7 +47,7 @@ set redrawtime=10000
 set shortmess+=c
 set cmdheight=2
 
-set guifont=Fira\ Code:h14
+set guifont=Powerline "make sure to escape the spaces in the name properly
 highlight ColorColumn ctermbg=0 guibg=lightgrey
 
 syntax enable
@@ -59,7 +59,6 @@ let g:coc_global_extensions = ['coc-emmet', 'coc-css', 'coc-html', 'coc-json', '
 
 let g:loaded_python_provider = 0
 let g:python3_host_prog = "C:/Users/whois/.pyenv/pyenv-win/versions/3.6.5/python3.exe"
-
 " COC Variables
 
 
@@ -70,8 +69,6 @@ let g:python3_host_prog = "C:/Users/whois/.pyenv/pyenv-win/versions/3.6.5/python
 call plug#begin('~/AppData/Local/nvim/plugged')
   " Interface and Theme
   Plug 'gruvbox-community/gruvbox'
-  Plug 'bling/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
 
   Plug 'SirVer/ultisnips'
   Plug 'mlaursen/vim-react-snippets'
@@ -91,6 +88,7 @@ call plug#begin('~/AppData/Local/nvim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'manasthakur/vim-commentor'
 
+  source ~/AppData/Local/nvim/plugins/airline.vim
   source ~/AppData/Local/nvim/plugins/telescope.vim
   source ~/AppData/Local/nvim/plugins/coc.vim
   source ~/AppData/Local/nvim/plugins/nerdtree.vim
