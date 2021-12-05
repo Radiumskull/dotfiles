@@ -48,8 +48,7 @@ set shortmess+=c
 set cmdheight=2
 
 set guifont=Powerline "make sure to escape the spaces in the name properly
-highlight ColorColumn ctermbg=0 guibg=lightgrey
-
+highlight ColorColumn ctermbg=0 guibg=lightgray
 syntax enable
 
 " Variables
@@ -68,8 +67,6 @@ let g:python3_host_prog = "C:/Users/whois/.pyenv/pyenv-win/versions/3.6.5/python
 "
 call plug#begin('~/AppData/Local/nvim/plugged')
   " Interface and Theme
-  Plug 'gruvbox-community/gruvbox'
-
   Plug 'SirVer/ultisnips'
   Plug 'mlaursen/vim-react-snippets'
 
@@ -88,17 +85,38 @@ call plug#begin('~/AppData/Local/nvim/plugged')
   Plug 'tpope/vim-surround'
   Plug 'manasthakur/vim-commentor'
 
-  source ~/AppData/Local/nvim/plugins/airline.vim
+  source ~/AppData/Local/nvim/plugins/dracula.vim
   source ~/AppData/Local/nvim/plugins/telescope.vim
+  source ~/AppData/Local/nvim/plugins/airline.vim
   source ~/AppData/Local/nvim/plugins/coc.vim
   source ~/AppData/Local/nvim/plugins/nerdtree.vim
-
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
   Plug 'mhinz/vim-startify'
 call plug#end()
+doautocmd User PlugLoaded
 
 
 lua << EOF
+require('telescope').load_extension('fzf')
+require('telescope').load_extension('coc')
+require('telescope').setup{
+  defaults = {
+    file_ignore_patterns = { "node_modules" },
+    mappings = {}
+  },
+  pickers = {},
+  extensions = {
+    fzf = {
+      fuzzy = true,                    -- false will only do exact matching
+      override_generic_sorter = true,  -- override the generic sorter
+      override_file_sorter = true,     -- override the file sorter
+      case_mode = "smart_case",        -- or "ignore_case" or "respect_case"
+                                       -- the default case_mode is "smart_case"
+    }
+  }
+}
+
+
 require'nvim-treesitter.configs'.setup {
   highlight = {
     enable = true,
@@ -106,8 +124,6 @@ require'nvim-treesitter.configs'.setup {
 }
 
 EOF
-
-colorscheme gruvbox
 
 " use alt+hjkl to move between split/vsplit panels
 tnoremap <A-h> <C-\><C-n><C-w>h
@@ -131,7 +147,7 @@ nmap <C-f> <Plug>(easymotion-overwin-f)
 
 
 " Save on CTRL-S
-nnoremap <C-s> :w <CR>
+nmap <C-s> :w <CR>
 
 
 
